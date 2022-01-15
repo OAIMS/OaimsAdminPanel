@@ -15,8 +15,8 @@ export class SideNavComponent implements OnInit {
       "routeName": 'banner'
     },
     {
-      "displayName": 'Doctors',
-      "routeName": 'all_doctors'
+      "displayName": 'Carousel',
+      "routeName": 'carousel'
     },
     {
       "displayName": 'Pending Application',

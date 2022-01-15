@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
-import { Banner } from './interface/banner';
+import { Carousel } from './interface/carousel';
 
 @Component({
-  selector: 'app-banner',
-  templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.css', '../../global/css/global.css']
+  selector: 'app-carousel',
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.css', '../../global/css/global.css']
 })
-export class BannerComponent implements OnInit {
+export class CarouselComponent implements OnInit {
 
-  public banners: Banner[] | any;
+  public banners: Carousel[] | any;
   public isresponsed: boolean = false;
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.httpService.get('banners')
+    this.httpService.get('carousels')
       .then((data) => {
         this.banners = data;
         this.isresponsed = true;

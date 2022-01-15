@@ -1,10 +1,10 @@
 <div class="banner-header">
   <header class="section-header">
-    <p>Banners For First Page</p>
+    <p>Carousels For First Page</p>
   </header>
-  <div class="container" *ngIf="isresponsed">
+  <div class="container-fluid" *ngIf="isresponsed">
     <div class="row">
-      <div class="col-md-6" *ngFor="let banner of banners">
+      <div class="col-md-12" *ngFor="let banner of banners">
         <div class="row justify-content-center mb-5">
           <i class="fa fa-image fa-3x mr-2 mt-0" style="color:lightskyblue"></i>
           <img class="img-fluid rounded" src="{{banner.image}}" />
@@ -13,5 +13,4 @@
       </div>
     </div>
   </div>
-
-</div>>
+</div>
