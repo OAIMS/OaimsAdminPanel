@@ -1,0 +1,22 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened class="side">
+    <mat-list role="list">
+      <h1>Admin</h1>
+      <mat-selection-list #shoes [multiple]="false">
+        <mat-list-option *ngFor="let childComponent of userProfile" [value]="childComponent.routeName"
+          (click)="loadUserInformationComponent(childComponent.routeName)">
+          {{childComponent.displayName}}
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content style="background-color: #dad3c7;">
+    <mat-toolbar style="background-color: rgb(53, 199, 53)">
+      <span style="color: #dad3c7;">Sehat Admin Panel</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
