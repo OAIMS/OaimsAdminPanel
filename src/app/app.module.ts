@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { BannerComponent } from './components/banner/banner.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { HeaderDirective } from './global/directives/header.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     SideNavComponent,
     BannerComponent,
     CarouselComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    HeaderDirective
   ],
   imports: [
     BrowserModule,
