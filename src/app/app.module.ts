@@ -17,7 +17,20 @@ import { BannerComponent } from './components/banner/banner.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { HeaderDirective } from './global/directives/header.directive';
-
+import { CategoriesBoxesComponent } from './components/categories-boxes/categories-boxes.component';
+import { CollectionComponent } from './components/collection/collection.component';
+import { TopSellingComponent } from './components/top-selling/top-selling.component';
+import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
+import { AllProductsComponent } from './components/all-products/all-products.component';
+import { SingleProductComponent } from './components/single-product/single-product.component';
+import { CategorySubcategoryComponent } from './components/category-subcategory/category-subcategory.component';
+import {MatCardModule} from '@angular/material/card';
+import { AddProductsComponent } from './components/modals/add-products/add-products.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +38,15 @@ import { HeaderDirective } from './global/directives/header.directive';
     BannerComponent,
     CarouselComponent,
     ContactUsComponent,
-    HeaderDirective
+    HeaderDirective,
+    CategoriesBoxesComponent,
+    CollectionComponent,
+    TopSellingComponent,
+    FeaturedProductsComponent,
+    AllProductsComponent,
+    SingleProductComponent,
+    CategorySubcategoryComponent,
+    AddProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,10 +55,17 @@ import { HeaderDirective } from './global/directives/header.directive';
     MatSnackBarModule,
     MatToolbarModule,
     MatListModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

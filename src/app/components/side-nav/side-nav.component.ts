@@ -19,12 +19,32 @@ export class SideNavComponent implements OnInit {
       "routeName": 'carousel'
     },
     {
-      "displayName": 'Pending Application',
-      "routeName": 'pending_appointments'
+      "displayName": 'Categories Boxes',
+      "routeName": 'categories-box'
     },
     {
-      "displayName": 'Appointments History',
-      "routeName": 'appointment-history'
+      "displayName": 'Collection Data',
+      "routeName": 'collection-data'
+    },
+    {
+      "displayName": 'Top Selling',
+      "routeName": 'top-selling'
+    },
+    {
+      "displayName": 'Featured Products',
+      "routeName": 'featured-products'
+    },
+    {
+      "displayName": 'All Products',
+      "routeName": 'all-products'
+    },
+    {
+      "displayName": 'Single Product',
+      "routeName": 'single-product'
+    },
+    {
+      "displayName": 'Categories & Subcategories',
+      "routeName": 'categories-subcategories'
     }
     // 'User Information', 'Medical History', 'Medicine Status',
   ];

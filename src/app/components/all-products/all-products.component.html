@@ -1,0 +1,40 @@
+<div class="heading">
+  <header gloablSectionHeader>
+    <p>Carousels For First Page</p>
+  </header>
+
+  <div class="container-fluid" *ngIf="isresponsed">
+      <button class="btn btn-primary ml-3 mb-3" (click)="openDialog()">Add Products</button>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let allProducts of allProductsData">
+        <div class="row justify-content-center mb-3 ml-3 mr-3">
+          <mat-card class="example-card background-color" >
+            <mat-card-header>
+              <mat-card-title>{{allProducts.name}}</mat-card-title>
+              <mat-card-subtitle>{{allProducts.subCategory.category.categoryName}}</mat-card-subtitle>
+              <mat-card-subtitle>{{allProducts.subCategory.subCategoryName}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src={{allProducts.images}} alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+               {{allProducts.description}}
+              </p>
+              <p>
+              Price: {{allProducts.price}}
+              </p>
+              <p>
+              Quantity: {{allProducts.quantity}}
+              </p>
+              <p>
+              Size: {{allProducts.size}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button class="btn btn-danger">Delete</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
