@@ -24,13 +24,15 @@ import { FeaturedProductsComponent } from './components/featured-products/featur
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
 import { CategorySubcategoryComponent } from './components/category-subcategory/category-subcategory.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { AddProductsComponent } from './components/modals/add-products/add-products.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatRadioModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ],
   providers: [
   ],
