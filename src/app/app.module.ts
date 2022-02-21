@@ -32,6 +32,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import { OrdersComponent } from './components/orders/orders.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { MatButtonModule } from '@angular/material/button';
     AllProductsComponent,
     SingleProductComponent,
     CategorySubcategoryComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
+    MatTableModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,

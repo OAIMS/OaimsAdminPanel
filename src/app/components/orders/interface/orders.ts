@@ -1,4 +1,4 @@
-export interface ContactUs {
+export interface Orders {
   _id: string;
   name: string;
   email: string;

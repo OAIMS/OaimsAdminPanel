@@ -45,6 +45,14 @@ export class SideNavComponent implements OnInit {
     {
       "displayName": 'Categories & Subcategories',
       "routeName": 'categories-subcategories'
+    },
+    {
+      "displayName": 'Contact Us',
+      "routeName": 'contact-us'
+    },
+    {
+      "displayName": 'Orders',
+      "routeName": 'orders'
     }
     // 'User Information', 'Medical History', 'Medicine Status',
   ];

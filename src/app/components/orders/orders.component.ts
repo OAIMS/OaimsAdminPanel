@@ -1,37 +1,30 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { HttpService } from 'src/app/services/http.service';
-import { ContactUs } from './interface/contactus';
 import { MatTableDataSource } from '@angular/material/table';
+import { HttpService } from 'src/app/services/http.service';
 
-export interface UserVitals{
-  _id: String
-  name: String,
-  email: String,
-  subject: String,
-  comments: String,
-}
+
 @Component({
-  selector: 'app-contact-us',
-  templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.css']
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.css']
 })
-export class ContactUsComponent implements OnInit {
-  constructor(private httpService: HttpService) { }
-
-  public contactData = []
-  public isresponsed: boolean = false;
+export class OrdersComponent implements OnInit {
+  orders = []
   @ViewChild('TABLE') table: ElementRef | any;
   displayedColumns: string[] = ['_id', 'name', 'email', 'subject', 'comment'];
 
-  dataSource = new MatTableDataSource<any>(this.contactData);
+  dataSource = new MatTableDataSource<any>(this.orders);
+  isresponsed: boolean = false
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.httpService.get('contactUs')
+    this.httpService.get('orders')
       .then((data) => {
-        this.contactData = data;
+        this.orders = data;
         console.log(data)
         this.dataSource = new MatTableDataSource<any>(data);
-        console.log("the collection data is:", this.contactData);
+        console.log("the collection data is:", this.orders);
         this.isresponsed = true;
       })
       .catch((error) => {
@@ -44,3 +37,5 @@ export class ContactUsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
+
+

@@ -1,14 +1,37 @@
 <div class="heading">
   <header gloablSectionHeader>
-    <p>Carousels For First Page</p>
+    <p>Top Selling</p>
   </header>
+
   <div class="container-fluid" *ngIf="isresponsed">
+
     <div class="row">
-      <div class="col-md-12" *ngFor="let topSellingData of topSelling">
-        <div class="row justify-content-center mb-5">
-          <i class="fa fa-image fa-3x mr-2 mt-0" style="color:lightskyblue"></i>
-          <img class="img-fluid rounded" src="{{topSellingData.image}}" />
-          <input class="ng-hide mt-2" id="input-file-id" multiple type="file" />
+      <div class="col-md-4" *ngFor="let top of topSelling">
+        <div class="row justify-content-center mb-3 ml-3 mr-3">
+          <mat-card class="example-card background-color" >
+            <mat-card-header>
+              <mat-card-title>{{top.name}}</mat-card-title>
+              <!-- <mat-card-subtitle>{{top.subCategory}}</mat-card-subtitle> -->
+            </mat-card-header>
+            <img mat-card-image src={{top.images}} alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+               {{top.description}}
+              </p>
+              <p>
+              Price: {{top.price}}
+              </p>
+              <p>
+              Quantity: {{top.quantity}}
+              </p>
+              <p>
+              Size: {{top.size}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button class="btn btn-danger">Delete</button>
+            </mat-card-actions>
+          </mat-card>
         </div>
       </div>
     </div>

@@ -112,4 +112,36 @@ export class HttpService {
         })
     })
   }
+
+  put(payload: object, route: string) {
+    return new Promise<any>((resolve, reject) => {
+      this.http.put(`${this.hostAddress.getHostIp()}/${route}`, payload,
+        // Header X_AUTH_TOKEN
+        this.header.getRequestOptions())
+        .toPromise()
+        .then((data: any) => {
+          // Debugger
+          console.log(data)
+          // Check Length of Data
+          if (data == null) {
+            // Error PopUp
+            this._snack.showSnackBar("Soory, You dont have any Medicine", "")
+          }
+          // Change Spnner State
+          // this.spin.changeSpinnerState(false)
+          // Hurrah Baby
+          resolve(data.payload)
+        })
+        .catch((err) => {
+          // Debugger
+          console.log(err)
+          // Error PopUp
+          this._snack.showSnackBar(err.error, "")
+          // Change Spnner State
+          // this.spin.changeSpinnerState(false)
+          // Rejection Baby
+          reject(err)
+        })
+    })
+  }
 }

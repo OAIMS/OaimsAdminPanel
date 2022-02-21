@@ -1,14 +1,38 @@
 <div class="heading">
   <header gloablSectionHeader>
-    <p>Carousels For First Page</p>
+    <p>All Collection</p>
   </header>
+
   <div class="container-fluid" *ngIf="isresponsed">
+
     <div class="row">
-      <div class="col-md-12" *ngFor="let collection of collectionData">
-        <div class="row justify-content-center mb-5">
-          <i class="fa fa-image fa-3x mr-2 mt-0" style="color:lightskyblue"></i>
-          <img class="img-fluid rounded" src="{{collection.image}}" />
-          <input class="ng-hide mt-2" id="input-file-id" multiple type="file" />
+      <div class="col-md-4" *ngFor="let collection of collectionData">
+        <div class="row justify-content-center mb-3 ml-3 mr-3">
+          <mat-card class="example-card background-color" >
+            <mat-card-header>
+              <mat-card-title>{{collection.name}}</mat-card-title>
+              <!-- <mat-card-subtitle>{{collection.subCategory}}</mat-card-subtitle> -->
+            </mat-card-header>
+            <img mat-card-image src={{collection.images[0]}} alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+               {{collection.description}}
+              </p>
+              <p>
+              Price: {{collection.price}}
+              </p>
+              <p>
+              Quantity: {{collection.quantity}}
+              </p>
+              <p>
+              Size: {{collection.size}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-warning" style="float: right">Delete Featured Product</button>
+            </mat-card-actions>
+          </mat-card>
         </div>
       </div>
     </div>

@@ -18,12 +18,11 @@ export class CollectionComponent implements OnInit {
     this.httpService.get('products/collection?type=summer')
       .then((data) => {
         this.collectionData = data;
+        console.log("the contact us data is:",this.collectionData);
         this.isresponsed = true;
       })
       .catch((error) => {
         console.error("Error in Collection Component ==> ", error.messgae)
       })
   }
-
-
 }

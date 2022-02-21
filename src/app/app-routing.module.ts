@@ -11,6 +11,8 @@ import { SingleProductComponent } from './components/single-product/single-produ
 import { TopSellingComponent } from './components/top-selling/top-selling.component';
 import { CategorySubcategoryComponent } from './components/category-subcategory/category-subcategory.component';
 import { AddProductsComponent } from './components/modals/add-products/add-products.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { OrdersComponent } from './components/orders/orders.component';
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: 'home', component: SideNavComponent },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'all-products', component: AllProductsComponent },
   { path: 'single-product', component: SingleProductComponent },
   { path: 'categories-subcategories', component: CategorySubcategoryComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'orders', component: OrdersComponent }
 ];
 
 @NgModule({
