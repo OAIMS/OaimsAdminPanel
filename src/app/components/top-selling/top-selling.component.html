@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let top of topSelling">
         <div class="row justify-content-center mb-3 ml-3 mr-3">
-          <mat-card class="example-card background-color" >
+          <mat-card class="example-card background-color">
             <mat-card-header>
               <mat-card-title>{{top.name}}</mat-card-title>
               <!-- <mat-card-subtitle>{{top.subCategory}}</mat-card-subtitle> -->
@@ -16,21 +16,22 @@
             <img mat-card-image src={{top.images}} alt="Photo of a Shiba Inu">
             <mat-card-content>
               <p>
-               {{top.description}}
+                {{top.description}}
               </p>
               <p>
-              Price: {{top.price}}
+                Price: {{top.price}}
               </p>
               <p>
-              Quantity: {{top.quantity}}
+                Quantity: {{top.quantity}}
               </p>
               <p>
-              Size: {{top.size}}
+                Count: {{top.count}}
+              </p>
+              <p>
+                Size: {{top.size}}
               </p>
             </mat-card-content>
-            <mat-card-actions>
-              <button class="btn btn-danger">Delete</button>
-            </mat-card-actions>
+
           </mat-card>
         </div>
       </div>

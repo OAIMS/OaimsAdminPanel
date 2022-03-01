@@ -13,6 +13,8 @@ import { CategorySubcategoryComponent } from './components/category-subcategory/
 import { AddProductsComponent } from './components/modals/add-products/add-products.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { MatRadioModule } from '@angular/material/radio';
+
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: 'home', component: SideNavComponent },
@@ -26,11 +28,11 @@ const routes: Routes = [
   { path: 'single-product', component: SingleProductComponent },
   { path: 'categories-subcategories', component: CategorySubcategoryComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'orders', component: OrdersComponent }
+  { path: 'orders', component: OrdersComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

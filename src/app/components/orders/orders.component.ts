@@ -9,22 +9,16 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  orders = []
-  @ViewChild('TABLE') table: ElementRef | any;
-  displayedColumns: string[] = ['_id', 'name', 'email', 'subject', 'comment'];
-
-  dataSource = new MatTableDataSource<any>(this.orders);
+  ordersData : any;
   isresponsed: boolean = false
 
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.httpService.get('orders')
+    this.httpService.get('orders?page=1&limit=1')
       .then((data) => {
-        this.orders = data;
-        console.log(data)
-        this.dataSource = new MatTableDataSource<any>(data);
-        console.log("the collection data is:", this.orders);
+        this.ordersData = data[0];
+        console.log("the collection data is:", this.ordersData);
         this.isresponsed = true;
       })
       .catch((error) => {
@@ -32,10 +26,6 @@ export class OrdersComponent implements OnInit {
       })
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 }
 
 

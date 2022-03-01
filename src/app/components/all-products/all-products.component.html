@@ -4,11 +4,11 @@
   </header>
 
   <div class="container-fluid" *ngIf="isresponsed">
-      <button class="btn btn-primary ml-3 mb-3" (click)="openDialog()">Add Products</button>
+    <button mat-stroked-button class="ml-3 mb-3" color="primary" (click)="openDialog()">Add Products</button>
     <div class="row">
       <div class="col-md-4" *ngFor="let allProducts of allProductsData">
         <div class="row justify-content-center mb-3 ml-3 mr-3">
-          <mat-card class="example-card background-color" >
+          <mat-card class="example-card background-color">
             <mat-card-header>
               <mat-card-title>{{allProducts.name}}</mat-card-title>
               <mat-card-subtitle>{{allProducts.subCategory.category.categoryName}}</mat-card-subtitle>
@@ -17,16 +17,16 @@
             <img mat-card-image src={{allProducts.images}} alt="Photo of a Shiba Inu">
             <mat-card-content>
               <p>
-               {{allProducts.description}}
+                {{allProducts.description}}
               </p>
               <p>
-              Price: {{allProducts.price}}
+                Price: {{allProducts.price}}
               </p>
               <p>
-              Quantity: {{allProducts.quantity}}
+                Quantity: {{allProducts.quantity}}
               </p>
               <p>
-              Size: {{allProducts.size}}
+                Size: {{allProducts.size}}
               </p>
             </mat-card-content>
             <mat-card-actions>

@@ -38,10 +38,7 @@ export class SideNavComponent implements OnInit {
       "displayName": 'All Products',
       "routeName": 'all-products'
     },
-    {
-      "displayName": 'Single Product',
-      "routeName": 'single-product'
-    },
+
     {
       "displayName": 'Categories & Subcategories',
       "routeName": 'categories-subcategories'

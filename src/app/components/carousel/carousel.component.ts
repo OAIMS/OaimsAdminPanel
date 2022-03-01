@@ -6,38 +6,36 @@ import { Carousel } from './interface/carousel';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.css', '../../global/css/global.css']
+  styleUrls: ['./carousel.component.css', '../../global/css/global.css'],
 })
 export class CarouselComponent implements OnInit {
-
   public banners: Carousel[] | any;
   public isresponsed: boolean = false;
-  constructor(private httpService: HttpService, private base64: Base64) { }
+  constructor(private httpService: HttpService, private base64: Base64) {}
 
   ngOnInit(): void {
-    this.httpService.get('carousels')
+    this.httpService
+      .get('carousels')
       .then((data) => {
         this.banners = data;
         this.isresponsed = true;
       })
       .catch((error) => {
-        console.error("Error in Banner Component ==> ", error.messgae)
-      })
+        console.error('Error in Banner Component ==> ', error.messgae);
+      });
   }
 
   async updateCarousel(event: any, id: string, index: number) {
-    let image = await this.base64.getBase64(event)
-    this.httpService.put({ "image": "https://cdn.wallpapersafari.com/7/35/QyH1PO.png" }, `carousels/${id}`)
-      .then(response => {
-        this.isresponsed = false
-        this.banners[index].image = image
-        this.isresponsed = true
+    let image = await this.base64.getBase64(event);
+    this.httpService
+      .put({ image: image }, `carousels/${id}`)
+      .then((response) => {
+        this.isresponsed = false;
+        this.banners[index].image = image;
+        this.isresponsed = true;
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-
-      })
-
+      });
   }
-
 }

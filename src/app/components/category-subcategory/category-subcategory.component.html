@@ -1,15 +1,30 @@
-<div class="heading">
+<div class="heading container">
   <header gloablSectionHeader>
-    <p>Carousels For First Page</p>
+    <p>Categories & Sub-categories</p>
   </header>
   <div class="container-fluid" *ngIf="isresponsed">
     <div class="row">
-      <div class="col-md-12" *ngFor="let categoriesSubcategorie of categoriesSubcategoriesData">
-        <div class="row justify-content-center mb-5">
-          <i class="fa fa-image fa-3x mr-2 mt-0" style="color:lightskyblue"></i>
-          <img class="img-fluid rounded" src="{{categoriesSubcategorie.image}}" />
-          <input class="ng-hide mt-2" id="input-file-id" multiple type="file" />
-        </div>
+      <div class="col-md-12">
+        <mat-accordion>
+          <mat-expansion-panel hideToggle *ngFor="let categorySubcategory of categoriesSubcategoriesData">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h1> {{categorySubcategory.categoryName}}</h1>
+              </mat-panel-title>
+
+
+            </mat-expansion-panel-header>
+            <div *ngFor="let subCategories of categorySubcategory.subcategories">
+              <h4>
+                {{subCategories.subCategoryName}} <button class="btn btn-danger"
+                  (click)="deleteSubCategory(subCategories.subCategoryId)">Delete</button>
+              </h4>
+
+            </div>
+            <button class="btn btn-danger" style="float: right">Add</button>
+          </mat-expansion-panel>
+        </mat-accordion>
+
       </div>
     </div>
   </div>

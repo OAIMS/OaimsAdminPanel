@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IpProvider {
-  ip: string = "https://oaims-backend.herokuapp.com/api";
+  ip: string = 'https://oaims-backend.herokuapp.com/api';
 
-
-  constructor() { }
+  constructor() {}
 
   getHostIp() {
     return this.ip;

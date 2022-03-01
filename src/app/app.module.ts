@@ -30,10 +30,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { OrdersComponent } from './components/orders/orders.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import '@simonwep/pickr/dist/themes/nano.min.css';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,7 @@ import {MatTableModule} from '@angular/material/table';
     SingleProductComponent,
     CategorySubcategoryComponent,
     AddProductsComponent,
-    OrdersComponent
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,10 +75,13 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTreeModule,
+    MatExpansionModule,
+    MatStepperModule,
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

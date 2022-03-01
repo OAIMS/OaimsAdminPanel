@@ -1,7 +1,7 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened class="side">
     <mat-list role="list">
-      <h1>Admin</h1>
+      <h1 style="text-align: center">OAIMS</h1>
       <mat-selection-list #shoes [multiple]="false">
         <mat-list-option *ngFor="let childComponent of userProfile" [value]="childComponent.routeName"
           (click)="loadUserInformationComponent(childComponent.routeName)">
@@ -10,12 +10,9 @@
       </mat-selection-list>
     </mat-list>
   </mat-drawer>
-  <mat-drawer-content >
-    <mat-toolbar style="background-color: rgb(53, 199, 53)">
-      <!-- <span style="color: #dad3c7;">Sehat Admin Panel</span> -->
-      <span class="example-spacer"></span>
-    </mat-toolbar>
-    <div class="container-fluid">
+  <mat-drawer-content>
+
+    <div class="container-fluid ">
       <router-outlet style="width: 100%;"></router-outlet>
     </div>
   </mat-drawer-content>
