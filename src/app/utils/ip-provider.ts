@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class IpProvider {
-  ip: string = 'https://oaims-backend.herokuapp.com/api';
+  ip: string = 'hhttp://oaimsbackendnodejs-env.eba-vtqw8fns.us-east-1.elasticbeanstalk.com/api';
 
   constructor() {}
 
