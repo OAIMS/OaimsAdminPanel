@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let collection of collectionData">
         <div class="row justify-content-center mb-3 ml-3 mr-3">
-          <mat-card class="example-card background-color" >
+          <mat-card class="example-card background-color">
             <mat-card-header>
               <mat-card-title>{{collection.name}}</mat-card-title>
               <!-- <mat-card-subtitle>{{collection.subCategory}}</mat-card-subtitle> -->
@@ -16,20 +16,20 @@
             <img mat-card-image src={{collection.images[0]}} alt="Photo of a Shiba Inu">
             <mat-card-content>
               <p>
-               {{collection.description}}
+                {{collection.description}}
               </p>
               <p>
-              Price: {{collection.price}}
+                Price: {{collection.price}}
               </p>
               <p>
-              Quantity: {{collection.quantity}}
+                Quantity: {{collection.quantity}}
               </p>
               <p>
-              Size: {{collection.size}}
+                Size: {{collection.size}}
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" (click)="deleteCollection(collection._id)">Delete</button>
             </mat-card-actions>
           </mat-card>
         </div>

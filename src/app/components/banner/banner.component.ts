@@ -28,7 +28,7 @@ export class BannerComponent implements OnInit {
   async updateBanner(event: any, id: string, index: number) {
     let image = await this.base64.getBase64(event);
     this.httpService
-      .put({ image: image }, `banners/${id}`)
+      .put(`banners/${id}`, event)
       .then((response) => {
         this.isresponsed = false;
         this.banners[index].image = image;

@@ -28,7 +28,7 @@ export class CarouselComponent implements OnInit {
   async updateCarousel(event: any, id: string, index: number) {
     let image = await this.base64.getBase64(event);
     this.httpService
-      .put({ image: image }, `carousels/${id}`)
+      .put(`carousels/${id}`, event)
       .then((response) => {
         this.isresponsed = false;
         this.banners[index].image = image;

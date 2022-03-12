@@ -39,6 +39,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import '@simonwep/pickr/dist/themes/nano.min.css';
+import { MatSelectModule } from '@angular/material/select';
+import { AddCategoryComponent } from './components/modals/add-category/add-category.component';
+import { AddSubcategoryComponent } from './components/modals/add-subcategory/add-subcategory.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,8 @@ import '@simonwep/pickr/dist/themes/nano.min.css';
     CategorySubcategoryComponent,
     AddProductsComponent,
     OrdersComponent,
+    AddCategoryComponent,
+    AddSubcategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,7 @@ import '@simonwep/pickr/dist/themes/nano.min.css';
     MatTreeModule,
     MatExpansionModule,
     MatStepperModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

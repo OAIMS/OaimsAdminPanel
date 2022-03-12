@@ -8,24 +8,24 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let orders of ordersData.orderItems">
         <div class="row justify-content-center mb-3 ml-3 mr-3">
-          <mat-card class="example-card background-color" >
+          <mat-card class="example-card background-color">
             <mat-card-header>
               <mat-card-title>{{orders.name}}</mat-card-title>
               <!-- <mat-card-subtitle>{{orders.subCategory}}</mat-card-subtitle> -->
             </mat-card-header>
-            <img mat-card-image src={{orders.images[0]}} alt="Photo of a Shiba Inu">
+            <!-- <img mat-card-image src={{orders.product.images}} alt="Photo of a Shiba Inu"> -->
             <mat-card-content>
+              <h3>
+                Product Heading: {{orders.product.name}}
+              </h3>
               <p>
-               {{orders.description}}
+                Price: {{orders.price}}
               </p>
               <p>
-              Price: {{orders.price}}
+                Quantity: {{orders.quantity}}
               </p>
               <p>
-              Quantity: {{orders.quantity}}
-              </p>
-              <p>
-              Size: {{orders.size}}
+                Size: {{orders.size}}
               </p>
             </mat-card-content>
             <mat-card-actions>

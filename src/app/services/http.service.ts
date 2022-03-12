@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Header from '../utils/header';
 import { IpProvider } from '../utils/ip-provider';
@@ -122,13 +122,18 @@ export class HttpService {
     });
   }
 
-  put(payload: object, route: string) {
+  put(route: string, image: any) {
+    const HttpUploadOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' }),
+    };
+    const formData = new FormData();
+    formData.append('image', image);
     return new Promise<any>((resolve, reject) => {
       this.http
         .put(
           `${this.hostAddress.getHostIp()}/${route}`,
-          payload,
           // Header X_AUTH_TOKEN
+          formData,
           this.header.getRequestOptions()
         )
         .toPromise()

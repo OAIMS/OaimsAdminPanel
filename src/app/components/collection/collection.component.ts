@@ -27,7 +27,7 @@ export class CollectionComponent implements OnInit {
   }
 
   deleteCollection(id: string) {
-    this.httpService.delete(id, 'products/featured/remove').then((data) => {
+    this.httpService.delete(id, 'products/collection').then((data) => {
       console.log(data);
       this.ngOnInit();
     });

@@ -1,8 +1,11 @@
+import { HttpService } from 'src/app/services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl } from '@angular/forms';
 import { ColorPickerService, Cmyk } from 'ngx-color-picker';
 import '@simonwep/pickr/dist/themes/nano.min.css';
 import Pickr from '@simonwep/pickr';
+import { CategorySubcategoryComponent } from '../../category-subcategory/category-subcategory.component';
+import Base64 from 'src/app/utils/base64';
 @Component({
   selector: 'app-add-products',
   templateUrl: './add-products.component.html',
@@ -11,43 +14,49 @@ import Pickr from '@simonwep/pickr';
 export class AddProductsComponent implements OnInit {
   count: any = [...Array(1).keys()];
   productCount: any = [...Array(1).keys()];
-  testTypes: string[] = ['Cotton', 'Mvs', 'Pvt', 'WashnWear', 'Boski'];
+  public categoriesSubcategoriesData: CategorySubcategoryComponent[] | any;
+  // testTypes: string[] = ['Cotton', 'Mvs', 'Pvt', 'WashnWear', 'Boski'];
   prices: any = [];
   sizes: any = [];
   images: any = [];
   colors: any = [];
+  category: any = [];
+  subCategory: any = [];
+  selectedCategory: any;
+  selectedSubCategory: any;
+  radioOption: any;
 
-  testNames: any = {
-    Cotton: ['96-88', 'sotton'],
-    Mvs: ['26-18', 'pvt'],
-    Pvt: ['18-18'],
-    WashnWear: ['100-80', '64-64', '58-58'],
-    Boski: ['chinaBoski'],
-  };
+  constructor(
+    private fb: FormBuilder,
+    private httpService: HttpService,
+    public base64: Base64
+  ) {}
 
-  currentTestType = this.testTypes[0];
-  currentTestNames = this.testNames[this.currentTestType];
-
-  testForm: any = this.fb.group({
-    testType: this.currentTestType,
-    testName: this.currentTestNames[0],
-  });
-
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {}
-
-  changeTestType() {
-    let newTestType = this.testForm.get('testType').value;
-    if (newTestType != this.currentTestType) {
-      this.currentTestType = newTestType;
-      this.currentTestNames = this.testNames[this.currentTestType];
-
-      // Set test name to be the first thing in the testNames array for this test type.
-      this.testForm.patchValue({
-        testName: this.currentTestNames[0],
+  ngOnInit(): void {
+    this.httpService
+      .get('sub-categories/category')
+      .then((data) => {
+        this.categoriesSubcategoriesData = data;
+        console.log(
+          'categoriesSubcategoriesData',
+          this.categoriesSubcategoriesData
+        );
+      })
+      .catch((error) => {
+        console.error('Error in Collection Component ==> ', error.messgae);
       });
-    }
+  }
+
+  getSubCategories(event: any) {
+    console.log(event);
+    this.subCategory.length = 0;
+    this.selectedCategory = event;
+    this.categoriesSubcategoriesData.map((data: any) => {
+      if (event == data.categoryName) {
+        console.log(data.subcategories);
+        this.subCategory = data.subcategories;
+      }
+    });
   }
 
   addCount() {
@@ -76,12 +85,12 @@ export class AddProductsComponent implements OnInit {
   }
 
   addPrice(price: any, i: any) {
-    this.prices[i] = price;
+    this.prices[i] = parseInt(price);
     console.log(this.prices);
   }
 
   addSizes(size: any, i: any) {
-    this.sizes[i] = size;
+    this.sizes[i] = parseInt(size);
     console.log(this.sizes);
   }
 
@@ -91,7 +100,46 @@ export class AddProductsComponent implements OnInit {
   }
 
   addImages(image: any, i: any) {
-    this.images[i] = image;
+    console.log(image);
+    this.base64.getBase64(image).then((data) => {
+      this.images[i] = data;
+    });
     console.log(this.images);
+  }
+
+  selectSubCategories(event: any) {
+    this.selectedSubCategory = event;
+  }
+
+  radioOptions(event: any) {
+    this.radioOption = event;
+  }
+
+  saveProduct(name: string, quantity: string, description: string) {
+    console.log(
+      name,
+      parseInt(quantity),
+      description,
+      this.prices,
+      this.sizes,
+      this.images,
+      this.colors,
+      this.selectedCategory,
+      this.selectedSubCategory,
+      this.radioOption
+    );
+    let obj = {
+      name: name,
+      description: description,
+      price: this.prices,
+      size: this.sizes,
+      images: this.images,
+      quantity: parseInt(quantity),
+      isFeatured: true,
+      subCategory: this.selectedSubCategory,
+      color: this.colors,
+      type: this.radioOption,
+    };
+    this.httpService.post(obj, 'products');
   }
 }
