@@ -123,18 +123,19 @@ export class HttpService {
   }
 
   put(route: string, image: any) {
+    console.log(image);
     const HttpUploadOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' }),
     };
     const formData = new FormData();
-    formData.append('image', image);
+    formData.append('image', image.target.files[0]);
+    console.log(formData);
     return new Promise<any>((resolve, reject) => {
       this.http
         .put(
           `${this.hostAddress.getHostIp()}/${route}`,
           // Header X_AUTH_TOKEN
-          formData,
-          this.header.getRequestOptions()
+          formData
         )
         .toPromise()
         .then((data: any) => {
@@ -184,6 +185,41 @@ export class HttpService {
           // this.spin.changeSpinnerState(false)
           // Hurrah Baby
           resolve(data.payload);
+        })
+        .catch((err) => {
+          // Debugger
+          console.log(err);
+          // Error PopUp
+          this._snack.showSnackBar(err.error, '');
+          // Change Spnner State
+          // this.spin.changeSpinnerState(false)
+          // Rejection Baby
+          reject(err);
+        });
+    });
+  }
+
+  uploadImage(image: any, route: string) {
+    const formData = new FormData();
+    console.log('image target', image.target.files[0]);
+    formData.append('image', image.target.files[0]);
+    console.log(formData);
+    return new Promise<any>((resolve, reject) => {
+      this.http
+        .post(`${this.hostAddress.getHostIp()}/${route}`, formData)
+        .toPromise()
+        .then((data: any) => {
+          // Debugger
+          console.log(data);
+          // Check Length of Data
+          if (data == null) {
+            // Error PopUp
+            this._snack.showSnackBar('Soory, You dont have any Medicine', '');
+          }
+          // Change Spnner State
+          // this.spin.changeSpinnerState(false)
+          // Hurrah Baby
+          resolve(data);
         })
         .catch((err) => {
           // Debugger

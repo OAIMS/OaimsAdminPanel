@@ -101,8 +101,12 @@ export class AddProductsComponent implements OnInit {
 
   addImages(image: any, i: any) {
     console.log(image);
-    this.base64.getBase64(image).then((data) => {
-      this.images[i] = data;
+    // service call karni hai
+    // uska response
+    // let res
+    // this.images[i] = res;
+    this.httpService.uploadImage(image, 'products/upload').then((data) => {
+      this.images[i] = data.payload;
     });
     console.log(this.images);
   }
@@ -138,7 +142,7 @@ export class AddProductsComponent implements OnInit {
       isFeatured: true,
       subCategory: this.selectedSubCategory,
       color: this.colors,
-      type: this.radioOption,
+      type: this.radioOption.toLowerCase(),
     };
     this.httpService.post(obj, 'products');
   }

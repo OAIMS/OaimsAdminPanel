@@ -15,7 +15,7 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService
-      .get('products/collection?type=summer')
+      .get('products/collection?type=collection')
       .then((data) => {
         this.collectionData = data;
         console.log('the contact us data is:', this.collectionData);
