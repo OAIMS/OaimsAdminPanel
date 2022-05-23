@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { CategoriesBox } from './interface/categoriesBox';
 import { AddCategoryComponent } from '../modals/add-category/add-category.component';
+import { DeletePopupComponent } from '../modals/delete-popup/delete-popup.component';
 
 @Component({
   selector: 'app-categories-boxes',
@@ -54,6 +55,12 @@ export class CategoriesBoxesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+    });
+  }
+
+  openWarning():void{
+    const dialogRef = this.dialog.open(DeletePopupComponent,{
+
     });
   }
 }

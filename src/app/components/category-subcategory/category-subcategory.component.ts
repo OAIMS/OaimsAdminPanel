@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { AddSubcategoryComponent } from '../modals/add-subcategory/add-subcategory.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DeletePopupComponent } from '../modals/delete-popup/delete-popup.component';
 export interface Id {
   categoryId: any;
 }
@@ -19,6 +20,7 @@ export class CategorySubcategoryComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup | any;
   secondFormGroup: FormGroup | any;
+  public dialogValue: string | any;
 
   constructor(
     private httpService: HttpService,
@@ -46,11 +48,25 @@ export class CategorySubcategoryComponent implements OnInit {
   }
 
   deleteSubCategory(id: string) {
-    this.httpService.delete(id, 'sub-categories/').then((data) => {
-      console.log(data);
-      this.ngOnInit();
+    const dialogRef = this.dialog.open(DeletePopupComponent, {
+      data: `Are you sure you want to delete?`,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result.data);
+      this.dialogValue = result.data;
+
+      if (this.dialogValue == 'You Confirmed') {
+        this.httpService.delete(id, 'sub-categories/').then((data) => {
+          console.log(data);
+          this.ngOnInit();
+        });
+      } else {
+        console.log('You dont wanted to delete this');
+      }
     });
   }
+
   openDialog(id: any): void {
     const dialogRef = this.dialog.open(AddSubcategoryComponent, {
       width: '550px',

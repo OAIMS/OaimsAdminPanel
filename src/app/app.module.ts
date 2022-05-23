@@ -42,6 +42,7 @@ import '@simonwep/pickr/dist/themes/nano.min.css';
 import { MatSelectModule } from '@angular/material/select';
 import { AddCategoryComponent } from './components/modals/add-category/add-category.component';
 import { AddSubcategoryComponent } from './components/modals/add-subcategory/add-subcategory.component';
+import { DeletePopupComponent } from './components/modals/delete-popup/delete-popup.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AddSubcategoryComponent } from './components/modals/add-subcategory/add
     OrdersComponent,
     AddCategoryComponent,
     AddSubcategoryComponent,
+    DeletePopupComponent,
   ],
   imports: [
     BrowserModule,

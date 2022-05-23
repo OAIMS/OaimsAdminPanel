@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { HttpService } from 'src/app/services/http.service';
+import { DeletePopupComponent } from '../modals/delete-popup/delete-popup.component';
 import { Collection } from './interface/collection';
 
 @Component({
@@ -10,8 +12,8 @@ import { Collection } from './interface/collection';
 export class CollectionComponent implements OnInit {
   public collectionData: Collection[] | any;
   public isresponsed: boolean = false;
-
-  constructor(private httpService: HttpService) {}
+  public dialogValue : string | any;
+  constructor(private httpService: HttpService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.httpService
@@ -27,9 +29,27 @@ export class CollectionComponent implements OnInit {
   }
 
   deleteCollection(id: string) {
-    this.httpService.delete(id, 'products/collection').then((data) => {
-      console.log(data);
-      this.ngOnInit();
+    const dialogRef = this.dialog.open(DeletePopupComponent, {
+      data: `Are you sure you want to delete?`,
     });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result.data);
+      this.dialogValue = result.data;
+
+      if(this.dialogValue=='You Confirmed'){
+      this.httpService.delete(id, 'products/collection').then((data) => {
+        console.log(data);
+        this.ngOnInit();
+      });
+      }
+      else{
+        console.log('You dont wanted to delete this')
+      }
+    });
+
+
   }
+
+
 }
